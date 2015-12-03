@@ -13,3 +13,5 @@ jdickerson - Did a lot of work, added Matt's work to the repo, messed around wit
  - Start faceting to get some more exploration
  - Figure out time series vs flat
  - Use the other data set to first predict Customers then Sales using the custs
+ - Do a log transform on sales
+ - Hard to figure out this oneHot encoding. Is it necessary?
