@@ -35,6 +35,7 @@
 \usepackage{sectsty} % Enables custom section titles
 \allsectionsfont{\usefont{OT1}{phv}{b}{n}} % Change the font of all section commands
 
+\usepackage{eurosym}
 \usepackage{fancyhdr} % Needed to define custom headers/footers
 \pagestyle{fancy} % Enables the custom headers/footers
 \usepackage{lastpage} % Used to determine the number of pages in the document (for "Page X of Total")
@@ -149,7 +150,10 @@ particular store, and how much each of those customers will spend, which will
 ultimately have to be accounted for within the model.\cite{Grewal}
 \end{itemize}
 
+
 \subsection*{Training Data Set}
+
+Keeping these factors in mind, Rossmann has provided the following data in their training set: 
 \begin{itemize}
 \item \textbf{Id} - an Id that represents a (Store, Date) duple within the test set
 \item \textbf{Store} - a unique Id for each store
@@ -262,6 +266,16 @@ The original exploratory analysis was done using OLS regression and Decision Tre
 
 After may attempts of utilizing Linear Support Vectors and Decision Trees, our next hypothesis was to test if using a boosting algorithm would improve the nature of the results.  Because Adaboost trains weak learners with the aim of selecting a weak hypothesis with a low weighted error, or “computing a weighted majority vote of the weak hypothesis”.\cite{Schapire} In addition, AdaBoost works well when handling noise and outliers in real world data, which made it an attractive option as the training data and test data sets did experience several outliers within the store sales and store promotions fields.
 
+After seeing the benefits provided by the AdaBoost algorithm, additional Boosting models were researched. Unlike the AdaBoost method, which improves the regression by varying the weights in the data points, the Extreme Gradient Boosting model (XGBoost) compensated by identifying the gradients and provides\cite{Schapire2}. In addition, XGBoost allowed us to customize the loss function to fit Rossmann’s method of evaluation (RMSPE)\cite{XGB}. 
+The performance improvements of the main iterations during the modeling phase on the training set, can be seen in Figure \ref{regressors}, and we selected to utilize the Extreme Gradient Boost model to evaluate the test set.
+
+\begin{figure}[!htbp]
+\centering
+\caption{Regressors and RMPSE}
+\label{regressors}
+\includegraphics[scale=0.75]{figures/regressors.png}
+\end{figure} 
+
 %------------------------------------------------
 
 \section*{Evaluation}
@@ -272,7 +286,7 @@ RMSPE = \sqrt{\frac{1}{n}\sum_{i=1}^n \left(\frac{y_i - \hat{y}_i}{y_i}\right)^2
 
 As a simpler proxy in training and testing, we used root mean square error, since the two would yield the same ordinal ranking of algorithms. We tested a few algorithms in attempting to discover a good model, and the RMSE results suggested that the boosted decision trees provided the best results. 
 
-The current working model achieves a RMSPE of 0.12072, compared to an "all-zeros" benchmark of 1.00. Clearly our model has substantial predictive power in its current form; future refinements could decrease the error further to increase accuracy of prediction.
+The current working model achieves a RMSPE of 0.12072 on the test training set. Because Rossman’s managers use individual methods to compare store sales, our benchmark will simply be the prior quarter average store sales, which has an RMSPE of 0.20. Clearly, our model has substantial predict power in its current form. In terms of actual sales, our model predicts \euro 275.50 M in total sales, while the benchmark predicts \euro 250.68M in total sales.
 
 %------------------------------------------------
 
@@ -285,7 +299,7 @@ The dashboard provided has the ability to select a particular store number or to
 \centering
 \caption{Example Dashboard}
 \label{dash}
-\includegraphics[width=\textwidth]{figures/dash.png}
+\includegraphics[scale=0.35]{figures/dash.png}
 \end{figure} 
 
 
@@ -297,7 +311,7 @@ In addition to the projected Sales, we will also provide Rossman’s management 
 \centering
 \caption{Variable Importance}
 \label{variables}
-\includegraphics[width=\textwidth]{figures/VariableImportance.png}
+\includegraphics[scale=0.5]{figures/VariableImportance.png}
 \end{figure} 
 
 
@@ -331,7 +345,12 @@ Same Store sales can trend up for numerous factors, including changes in: custom
 
 \section*{Conclusion}
 
-The result of all of this effort if a full production-ready model which could be deployed on top of Rossmann's transactional database, to give a continuously updated forecast of the next 6 weeks. If we see that the performance extends beyond that, we could generalize the model to do longer projections. This will solve Rossmann's problems of many different modelling and projection paradigms being used simultaneously by the various store managers. This will allow for better planning of promotional schedules and better ability to forecast the effects of new competitors in the area.
+The result of all of this effort if a full production-ready model which could be deployed on top of Rossmann's transactional database, to give a continuously updated forecast of the next 6 weeks. If we see that the performance extends beyond that, we could generalize the model to do longer projections. 
+The change in sales from our model, as compared to the benchmark, on the test data set is
+about 25M Euros, or about a 9\% difference. This becomes very significant, as Rossmann has to compete 
+with other retailers in the low margin environment. Because our model is more accurate, it makes a 
+positive effect within Rossmann’s operations, and will solve  Rossmann’s problems of many different 
+modelling and projection paradigms being used simultaneously by the various store managers. This will allow for better planning of promotional schedules and better ability to forecast the effects of new competitors in the area.
 
 Some areas for future work would be introducing time series elements to the model, or expanding the current variables to further explain some of the variance. Overall for the relative simplicity of the model, achieving 12\% error is a good result. Further refinement and algorithmic tuning could get the error down further.
 
@@ -359,6 +378,14 @@ Jank, W. (2011). Business analytics for managers. New York: Springer.
 Grewal, D., Krishnan, R., Levy, M., \& Munger, J. (n.d.). Retail Success and Key 
 Drivers. Retailing in the 21st Century, 13-25.
 
+
+\bibitem{Schapire2} Schapire, R., \& Freund, Y. (2012). Boosting foundations and algorithms. Cambridge, MA: MIT Press. 
+
+\bibitem{XGB} XGBoost Documentation. (n.d.). Retrieved December 11, 2015, from https://xgboost.readthedocs.org/en/latest/  
+
+\bibitem{Rao}Rao, T. (2012). Time series analysis: Methods and applications. Amsterdam: North Holland.
+
+
 \end{thebibliography}
 
 
@@ -370,7 +397,7 @@ Drivers. Retailing in the 21st Century, 13-25.
 The team was comprised of Jonathan Dickerson, Madhav Kapoor, and Matthew Osinski. All three team members contributed to the writing of this document. The code was also worked on in parallel, with the final model comprising components of Jon and Madhav's data munging with Matt's tuning and choosing of the algorithms. The source code used in all data analysis and report writing can be found at https://github.com/jaydik/bia656.git. The code was completed entirely in Python using pandas and scikit-learn, with this report being written in \LaTeX. 
 
 \subsection*{Kaggle Results}
-As of this writing, the competition is not completed, however our current RMSPE is 0.12072, which is good for 1869th place of 3429 participants. Our team name is justwhatever656 and the results can be retrieved from https://www.kaggle.com/c/rossmann-store-sales/leaderboard. 
+As of this writing, the competition is not completed, however our current RMSPE is 0.12072, which is good for 1869th place of 3429 participants. Our team name is justwhateverbia656 and the results can be retrieved from https://www.kaggle.com/c/rossmann-store-sales/leaderboard. 
 %----------------------------------------------------------------------------------------
 
 \end{document}

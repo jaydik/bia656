@@ -56,9 +56,17 @@
  
 \begin{figure}[!htbp]
 \centering
+\caption{Regressors and RMPSE}
+\label{regressors}
+\includegraphics[scale=0.75]{figures/regressors.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
 \caption{Example Dashboard}
 \label{dash}
-\includegraphics[width=\textwidth]{figures/dash.png}
+\includegraphics[scale=0.35]{figures/dash.png}
 \end{figure}
 \efloatseparator
  
@@ -66,7 +74,7 @@
 \centering
 \caption{Variable Importance}
 \label{variables}
-\includegraphics[width=\textwidth]{figures/VariableImportance.png}
+\includegraphics[scale=0.5]{figures/VariableImportance.png}
 \end{figure}
 \efloatseparator
  
