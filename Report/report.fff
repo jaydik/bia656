@@ -1,0 +1,72 @@
+\begin{figure}[!htbp]
+\centering
+\caption{Sales Histogram}
+\label{lognormalhist}
+\includegraphics[scale=0.75]{figures/saleslognormalhist.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
+\caption{Sales QQ Plot}
+\label{lognormalqq}
+\includegraphics[scale=0.75]{figures/saleslognormalQQ.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
+\caption{Count of Stores}
+\label{closedstores}
+\includegraphics[scale=0.70]{figures/closedstores.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
+\caption{Sales per Week}
+\label{seasonality}
+\includegraphics[scale=0.65]{figures/seasonality.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
+\caption{Transformed Sales Histogram}
+\label{normalhist}
+\includegraphics[scale=0.75]{figures/salesnormalhist.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
+\caption{Transformed Sales QQ Plot}
+\label{normalqq}
+\includegraphics[scale=0.75]{figures/salesnormalQQ.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
+\caption{Sales Decomposition}
+\label{store1trend}
+\includegraphics[scale=0.75]{figures/store1trend.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
+\caption{Example Dashboard}
+\label{dash}
+\includegraphics[width=\textwidth]{figures/dash.png}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htbp]
+\centering
+\caption{Variable Importance}
+\label{variables}
+\includegraphics[width=\textwidth]{figures/VariableImportance.png}
+\end{figure}
+\efloatseparator
+ 
