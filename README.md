@@ -12,6 +12,6 @@ jdickerson - Did a lot of work, added Matt's work to the repo, messed around wit
 2015-12-03
 jdickerson - Finally figured out the bug that was making high submission scores. Added some data cleaning steps, messed around with the onehotencoding and the boosting. Getting there.
 
-## TODO:
- - Use the other data set to first predict Customers then Sales using the custs
- - Submit around 6 or 7pm the boosted one hot file
+2015-12-13
+Submitted and done with report on the 11th. Comptetion closed.
+
